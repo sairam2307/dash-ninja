@@ -1,10 +1,10 @@
 # Steps to follow
 
 # Clone the project
-1. git clone https://gitlab.com/sairam1806/dash_ninja.git
+1. git clone https://github.com/sairam2307/dash-ninja.git
 
 # Download Python
-2. Download Python 3.5.2 from "https://www.python.org/downloads/release/python-352/"
+2. Download Python 3.5.2 from https://www.python.org/downloads/release/python-352/
 
 # Install virtualenv
 2.  pip install virtualenv
