@@ -1,0 +1,1106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="../img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+</head>
+
+<body>
+
+  <!--Navbar -->
+  <section class="indigo">
+    <div class="container">
+      <nav class="mb-1 navbar navbar-expand-lg navbar-dark indigo">
+        <a class="navbar-brand" href="#">{{company_item.name}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+          aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+          <ul class="navbar-nav m-auto">
+            {% for category in categories %}
+            <li class="nav-item dropdown">
+              <a class="nav-link hd   {% if category.items_set.all %} dropdown-toggle {% endif %}" id="navbarDropdownMenuLink-333" 
+              data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">{{ category.name }}
+              </a>
+              
+              <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                {% for item in category.items_set.all %}
+                {% if item.status %}
+                <a class="dropdown-item" href="#">{{ item.name }}</a>
+                {% endif %}
+                {% endfor %}
+                <!-- <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+              </div>
+              
+            </li>
+            {% endfor %}
+            <!-- <li class="nav-item dropdown active">
+              <a class="nav-link hd dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">CLIENT
+              </a>
+              <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link hd dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">PAYER
+              </a>
+              <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link hd dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">BILLING
+              </a>
+              <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link hd" href="#">PAYROLL
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hd" href="#">REPORTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hd" href="#">SETTINGS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hd" href="#">ACTIVITY</a>
+            </li> -->
+          </ul>
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light">
+
+                <i class=" fas fa-bell"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                aria-labelledby="navbarDropdownMenuLink-333">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
+  <section class="ninja">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-xl-3 chat">
+          <div class="card mb-sm-3 mb-md-0 contacts_card">
+            <div class="card-header">
+              <div class="input-group">
+                <input type="text" placeholder="Search..." name="" class="form-control search">
+                <div class="input-group-prepend">
+                  <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+                  <span class="input-group-text search_btn"><i class="fas fa-filter"></i></span>
+
+                </div>
+              </div>
+            </div>
+            <div class="card-body contacts_body scrollbar" id="style-2">
+              <ui class="contacts">
+                <li class="active">
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon"></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img
+                        src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon"></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img
+                        src="http://profilepicturesdp.com/wp-content/uploads/2018/07/sweet-girl-profile-pictures-9.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                      <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                        class="rounded-circle user_img">
+                      <span class="online_icon "></span>
+                    </div>
+                    <div class="user_info">
+                      <span>Eric Sanderson</span>
+                      <p>Carlisle, PA</p>
+                    </div>
+                  </div>
+                </li>
+              </ui>
+              <div class="card-footer">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination pg-blue">
+                    <li class="page-item">
+                      <a class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link">1</a></li>
+                    <li class="page-item active">
+                      <a class="page-link">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-xl-9 chat">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs md-tabs nav-justified " role="tablist">
+            <li class="nav-item">
+              <!-- <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">
+                <i class="fas fa-user pr-2"></i></a> -->
+                <a class="nav-link active" id="profile-tab-just" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="true">   <i class="fas fa-user pr-2"></i>Profile</a>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link ath" data-toggle="tab" href="#author" role="tab">
+                <i class="fab fa-creative-commons-remix pr-2"></i>Authorizations</a> -->
+                <a class="nav-link " id="auth-tab-just" data-toggle="tab" href="#auth" role="tab" aria-controls="auth"
+                aria-selected="true"><i class="fab fa-creative-commons-remix pr-2"></i>Authorizations</a>
+            </li>
+            <li class="nav-item ">
+              <!-- <a class="nav-link ath" data-toggle="tab" href="#cabinet" role="tab">
+                <i class="fas fa-list pr-2"></i>Cabinet</a> -->
+                <a class="nav-link " id="cabinet-tab-just" data-toggle="tab" href="#cabinet" role="tab" aria-controls="cabinet"
+                aria-selected="true"> <i class="fas fa-list pr-2"></i>Cabinet</a>
+            </li>
+            <li class="nav-item ">
+              <!-- <a class="nav-link ath" data-toggle="tab" href="#schedule" role="tab">
+                <i class="far fa-calendar-alt pr-2"></i>Schedule</a> -->
+                <a class="nav-link " id="schedule-tab-just" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule"
+                aria-selected="true"> <i class="far fa-calendar-alt pr-2"></i>Schedule</a>
+            </li>
+          </ul>
+          <!-- Nav tabs -->
+
+          <!-- Tab panels -->
+          <div class="tab-content">
+
+            <!-- Panel 1 -->
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab-just">
+
+                <div class="card">
+                    <div class="card-header scott" id="headingOne">
+                      <h5 class="mb-0">
+    
+                        Nelson , Scott
+                      </h5>
+                    </div>
+    
+                  </div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12">
+    
+    
+                        <a class="btn btn-primary personal" data-toggle="collapse" href="#collapseExample" role="button"
+                          aria-expanded="false" aria-controls="collapseExample">
+                          Personal Info<i class="fas fa-angle-down rotate-icon"></i>
+                        </a>
+    
+    
+                        <!-- Collapsed content -->
+                        <div class="collapse mt-3" id="collapseExample">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-md-12 border">
+    
+                                <div class="row">
+                                  <div class="col-md-2">
+                                    <div class="doctor roundtab">
+                                      <img src="https://www.medeaz.com///media/profile_pics/SRINIVAD.jpg"
+                                        class="img-responsive">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-10">
+                                    <div class="dctrprf">
+                                      <div class="profile">
+                                        <h4 class="title">Nelson Scott
+                                          <span class="text-infos bold">( Alias: ScNe01 )</span></h4>
+                                        <p>Office Name</p>
+                                        <!-- <a href="#" class="view">View Profile</a> -->
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6 box">
+                                          <ul class="evet-sec">
+                                            <li><i class="fas fa-map-marker-alt"></i>
+                                              <span class="city">123 Spring,</span> Los Angeles, CA 1035</li>
+    
+                                            <li><i class="fas fa-phone-square"></i>
+    
+                                              <span class="city">555-999-999, 666-444-999</span>
+                                            </li>
+                                            <li><i class="fas fa-envelope"></i>
+    
+                                              <span>nelsonscott@gmail.com</span>
+                                            </li>
+    
+                                          </ul>
+    
+    
+                                        </div>
+                                        <div class="col-md-6">
+                                          <p class="date mb-2"><span> Date of Birth </span>: May 25, 1974</p>
+                                          <p class="date"><span>Gender</span> : Male</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+    
+                                </div>
+    
+    
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <a class="btn btn-primary personal" data-toggle="collapse" href="#custom" role="button"
+                          aria-expanded="false" aria-controls="custom">
+                          Custom Fields
+                        </a>
+                        <div class="collapse mt-3" id="custom">
+                          <p class="dates"><span>School Grade</span> : A+</p>
+                          <p class="dates"><span>Age </span>: 12</p>
+                          <p class="dates"><span>class </span>: XII</p>
+                          <p class="dates"><span>Date of Birth </span>: May 25, 1974</p>
+                          <p class="dates"><span>School Name </span>: ST Theresa, Newyork</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <a class="btn btn-primary personal" data-toggle="collapse" href="#contact" role="button"
+                          aria-expanded="false" aria-controls="contact">
+                          contact
+                        </a>
+                        <div class="collapse mt-3" id="contact">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="card parents mb-3">
+                                <div class="card-header day">
+                                  Parents
+                                </div>
+                                <div class="card-body">
+                                  <p>Mr & Mrs. Smith</p>
+                                  <ul class="evet-sec pl-0">
+                                    <li><i class="fas fa-map-marker-alt"></i>
+                                      <span class="city">123 Spring,</span> Los Angeles, CA 1035</li>
+    
+                                    <li><i class="fas fa-phone-square"></i>
+    
+                                      <span class="city">555-999-999, 666-444-999</span>
+                                      <button class="btn btn-primary prts">primary</button>
+                                    </li>
+                                    <li><i class="fas fa-envelope"></i>
+    
+                                      <span>nelsonscott@gmail.com</span>
+                                      <button class="btn btn-default res">Responsible Party</button>
+                                    </li>
+    
+                                  </ul>
+    
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card parents mb-3">
+                                <div class="card-header day">
+                                  Day Care
+                                </div>
+                                <div class="card-body">
+                                  <p>ABC Day Care Center</p>
+                                  <ul class="evet-sec pl-0">
+                                    <li><i class="fas fa-map-marker-alt"></i>
+                                      <span class="city">123 Spring,</span> Los Angeles, CA 1035</li>
+    
+                                    <li><i class="fas fa-phone-square"></i>
+    
+                                      <span class="city">555-999-999, 666-444-999</span>
+                                    </li>
+                                    <li><i class="fas fa-envelope"></i>
+    
+                                      <span>nelsonscott@gmail.com</span>
+                                    </li>
+    
+                                  </ul>
+    
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card parents mb-3">
+                                <div class="card-header day">
+                                  Parents
+                                </div>
+                                <div class="card-body">
+                                  <p>Mr & Mrs. Smith</p>
+                                  <ul class="evet-sec pl-0">
+                                    <li><i class="fas fa-map-marker-alt"></i>
+                                      <span class="city">123 Spring,</span> Los Angeles, CA 1035</li>
+    
+                                    <li><i class="fas fa-phone-square"></i>
+    
+                                      <span class="city">555-999-999, 666-444-999</span>
+                                    </li>
+                                    <li><i class="fas fa-envelope"></i>
+    
+                                      <span>nelsonscott@gmail.com</span>
+                                    </li>
+    
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card parents mb-3">
+                                <div class="card-header day">
+                                  Day Care
+                                </div>
+                                <div class="card-body">
+                                  <p>ABC Day Care Center</p>
+                                  <ul class="evet-sec pl-0">
+                                    <li><i class="fas fa-map-marker-alt"></i>
+                                      <span class="city">123 Spring,</span> Los Angeles, CA 1035</li>
+    
+                                    <li><i class="fas fa-phone-square"></i>
+    
+                                      <span class="city">555-999-999, 666-444-999</span>
+                                    </li>
+                                    <li><i class="fas fa-envelope"></i>
+    
+                                      <span>nelsonscott@gmail.com</span>
+                                    </li>
+    
+                                  </ul>
+    
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12">
+    
+                        <a class="btn btn-primary personal" data-toggle="collapse" href="#assesment" role="button"
+                          aria-expanded="false" aria-controls="assesment">
+                          Client Assignment
+                        </a>
+                        <div class="collapse mt-3" id="assesment">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="card staff">
+                                <div class="card-header day">
+                                  Staff Assignment
+                                </div>
+                                <div class="card-body">
+                                  <ui class="contacts">
+                                    <li class="active">
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Eric Sanderson</span>
+                                          <p>Carlisle, PA</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img
+                                            src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon "></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Taherah Big</span>
+                                          <p>Taherah left 7 mins ago</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img
+                                            src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Sami Rafi</span>
+                                          <p>Sami is online</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img
+                                            src="http://profilepicturesdp.com/wp-content/uploads/2018/07/sweet-girl-profile-pictures-9.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon "></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Nargis Hawa</span>
+                                          <p>Nargis left 30 mins ago</p>
+                                        </div>
+                                      </div>
+                                    </li>
+    
+                                  </ui>
+    
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card staff">
+                                <div class="card-header day">
+                                  Team Beata
+                                </div>
+                                <div class="card-body">
+                                  <ui class="contacts">
+                                    <li class="active">
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Eric Sanderson</span>
+                                          <p>Carlisle, PA</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img
+                                            src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon "></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Taherah Big</span>
+                                          <p>Taherah left 7 mins ago</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img
+                                            src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Sami Rafi</span>
+                                          <p>Sami is online</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                          <img
+                                            src="http://profilepicturesdp.com/wp-content/uploads/2018/07/sweet-girl-profile-pictures-9.jpg"
+                                            class="rounded-circle user_img">
+                                          <span class="online_icon "></span>
+                                        </div>
+                                        <div class="user_info">
+                                          <span>Nargis Hawa</span>
+                                          <p>Nargis left 30 mins ago</p>
+                                        </div>
+                                      </div>
+                                    </li>
+    
+                                  </ui>
+    
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                           <!-- client -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <a class="btn btn-primary personal" data-toggle="collapse" href="#client" role="button"
+                      aria-expanded="false" aria-controls="client">
+                      Add Client
+                    </a>
+                    <div class="collapse mt-3" id="client">
+                        <div class=" bootstrap snippet">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <!--left col-->
+      
+                                  <h5 class="title">Personal Info</h5>
+                                  <p class="avatar">Avatar</p>
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                      <div class="txt">
+                                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                                          class=" img-circle img-fluid" alt="avatar">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                      <h4 class="title mb-2">Upload a photo</h4>
+                                      <h5 class="titles">From Your Computer</h5>
+                                      or
+                                      <div class="">
+                                        <h4 class="title mb-2">Take a photo</h4>
+                                        <h5 class="titles"> With your webcam</h5>
+                                      </div>
+                                    </div>
+                                    </hr><br>
+      
+                                  </div>
+      
+                                  <div class="">
+                                    <form class="form" role="form">
+                                        <div class="md-form">
+                                            <input type="text" id="orangeForm-name" class="form-control">
+                                            <label for="orangeForm-name" class="">First name</label>
+                                          </div>
+                                      <!-- <div class="form-group">
+                                        <input type="text" id="" placeholder="First Name" class="form-control cls">
+                                      </div> -->
+                                      <div class="md-form">
+                                        <input type="text" id="orangeForm-name" class="form-control">
+                                        <label for="middle-name" class="">Middle name</label>
+                                      </div>
+                                      <div class="md-form">
+                                        <input type="text" id="orangeForm-name" class="form-control">
+                                        <label for="last-name" class="">Last name</label>
+                                      </div>
+                                      <div class="md-form">
+                                        <input type="text" id="orangeForm-name" class="form-control">
+                                        <label for="name" class="">Alias</label>
+                                      </div>
+                                      <div class="md-form">
+                                        <input type="text" id="orangeForm-name" class="form-control">
+                                        <label for="orangeForm-name" class="">Office</label>
+                                      </div>
+                                      <div class="md-form">
+                                        <input type="text" id="orangeForm-name" class="form-control">
+                                        <label for="orangeForm-name" class="">Date of Birth</label>
+                                      </div>
+                                     
+                                      <div class="form-group">
+                                        <div class="row">
+                                          <label class="control-label col-sm-5">Gender</label>
+                                          <div class="col-sm-9 col-md-7">
+                                            <div class="row">
+                                              <div class="col-sm-6 col-md-6">
+                                                <div class="form-check-inline">
+                                                  <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="">Male
+                                                  </label>
+                                                </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-6">
+                                                <div class="form-check-inline">
+                                                  <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="">Female
+                                                  </label>
+                                                </div>
+                                              </div>
+      
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div> <!-- /.form-group -->
+                                      <div class="form-group">
+                                        <div class="row">
+                                          <label class="control-label col-sm-5 col-md-5">Service Provider</label>
+                                          <div class="col-sm-7 col-md-7">
+                                     <!-- Material switch -->
+                                     <div class="switch">
+                                        <label>
+                                          Off
+                                          <input type="checkbox" checked="checked">
+                                          <span class="lever"></span> On
+                                        </label>
+                                      </div>
+
+                                        <!--  -->
+                                          </div>
+                                        </div>
+                                      </div> <!-- /.form-group -->
+                                    </form>
+                                  </div>
+
+                                </div>
+                            
+                            
+                                <div class="col-md-6">
+
+                                    <h5 class="title">Address</h5>
+                                    <div class="">
+                                      <form class="form" role="form">
+                                        <div class="md-form">
+                                            <input type="text" id="orangeForm-name" class="form-control">
+                                            <label for="orangeForm-name" class="">Street</label>
+                                          </div>
+                                          <div class="md-form">
+                                            <input type="text" id="orangeForm-name" class="form-control">
+                                            <label for="orangeForm-name" class="">City</label>
+                                          </div>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-md-8">
+                                            <div class="form-group">
+                                              <!-- <label for="sel1">Select list:</label> -->
+                                              <select class="form-control cls" id="sel1">
+                                                <option>State</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="form-group">
+                                              <!-- <input type="text" id="Name" placeholder="Zip Code" class="form-control cls"> -->
+                                              <div class="md-form mt-0">
+                                                <input type="text" id="orangeForm-name" class="form-control">
+                                                <label for="orangeForm-name" class="">City</label>
+                                              </div>
+                                            </div>
+                                          </div>
+        
+                                        </div>
+                                        <div class="md-form mt-0">
+                                            <input type="text" id="orangeForm-name" class="form-control">
+                                            <label for="orangeForm-name" class="">Address</label>
+                                          </div>
+                                      </form>
+                                      </div>
+                                        <h5 class="title">Contact Info</h5>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="form-group">
+                                              <label for="sel1">Select </label>
+                                              <select class="form-control cls" id="sel1">
+                                                <option>Mobile</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="md-form nums">
+                                                <input value="555-666-999" type="text" id="form4" class="form-control num">
+                                                <label class="active" for="form4">Phone Number</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+        
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="form-group">
+                                              <label for="sel1">Select </label>
+                                              <select class="form-control cls" id="sel1">
+                                                <option>Mobile</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="md-form nums">
+                                                <input value="555-666-999" type="text" id="form4" class="form-control num">
+                                                <label class="active" for="form4">Phone Number</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+        
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="form-group">
+                                              <label for="sel1">Select </label>
+                                              <select class="form-control cls" id="sel1">
+                                                <option>Mobile</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="md-form nums">
+                                                <input value="555-666-999" type="text" id="form4" class="form-control num">
+                                                <label class="active" for="form4">Phone Number</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+        
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="form-group">
+                                              <label for="sel1">Select </label>
+                                              <select class="form-control cls" id="sel1">
+                                                <option>Mobile</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-6 col-md-4">
+                                            <div class="md-form nums">
+                                                <input value="555-666-999" type="text" id="form4" class="form-control num">
+                                                <label class="active" for="form4">Phone Number</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+        
+                                          </div>
+                                        </div>
+                                          <div class="row">
+                                            <div class="col-md-8">
+                                              <div class="form-group">
+                                                <input type="date" id="" placeholder="Email address" class="form-control cls"
+                                                  required>
+                                              </div>
+                                            </div>
+                                              <div class="col-md-4">
+        
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-8">
+                                                <div class="form-group">
+                                                  <input type="date" id="" placeholder="Email address2" class="form-control cls"
+                                                    required>
+                                                </div>
+                                              </div>
+                                                <div class="col-md-4">
+        
+                                                </div>
+                                              </div>
+                                            </div>
+        
+                                          </div>
+        
+        
+                                    </div>
+                                    <!--/tab-content-->
+        
+                                  </div>
+                                </div>
+                            </div>
+                            </div>
+                  </div>
+
+                
+      
+            <!-- Panel 2 -->
+            <div class="tab-pane fade  " id="auth" role="tabpanel" aria-labelledby="auth-tab-just">
+              <p class="pt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+                doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat
+                ratione porro voluptate odit minima.</p>
+
+
+            </div>
+            <!-- Panel 2 -->
+            <!-- Panel 2 -->
+            <div class="tab-pane fade  " id="cabinet" role="tabpanel" aria-labelledby="cabinet">
+
+              <p class="pt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+                doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat
+                ratione porro voluptate odit minima.</p>
+
+
+            </div>
+            <!-- Panel 3 -->
+
+            <!-- Panel 2 -->
+            <div class="tab-pane fade  " id="schedule" role="tabpanel" aria-labelledby="schedule-tab-just">
+              <p class="pt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+                doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat
+                ratione porro voluptate odit minima.</p>
+
+
+            </div>
+            <!-- Panel 4 -->
+          </div>
+          <!-- Tab panels -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/.Navbar -->
+  <footer class="fdb-block footer-small ">
+    <div class="container">
+      <div class="row text-center align-items-center">
+        <div class="col">
+          <ul class="nav justify-content-center">
+            {% for footer_item in footer_items %}
+            <li class="nav-item">
+              <a class="nav-link aloha active" href="#">{{ footer_item.name }}</a>
+            </li>
+            {% endfor %}
+            <!-- <li class="nav-item">
+              <a class="nav-link aloha" href="#">Terms of use</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link aloha" href="#">Answers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link aloha" href="#">Maintenance schedule</a>
+            </li> -->
+          
+          </ul>
+          <p class="h5 mt-5">{{company_item.name}}</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+
+</body>
+
+</html>
