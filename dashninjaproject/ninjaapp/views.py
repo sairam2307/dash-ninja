@@ -7,4 +7,4 @@ def tab(request):
     footer_items = Footer.objects.filter(status=True)
     company_item = Company.objects.filter(status=True).last()
 
-    return render(request, 'tab.html',{'categories':categories,'footer_items':footer_items,'company_item':company_item})
+    return render(request, 'index.html',{'categories':categories,'footer_items':footer_items,'company_item':company_item})
